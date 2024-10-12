@@ -1,11 +1,11 @@
 <script>
     export let cell;
-  
+    export let onClickCell;
+
   </script>
   
-  <div class="cell">
+  <div class="cell" on:click={() => onClickCell(cell)}>
     {#if !cell.visited}
-    <p>{cell.value}</p>
     
     {:else if cell.value === -1}
     <img src="../img/bomb.png" alt="Bombe" width="20" height="20">

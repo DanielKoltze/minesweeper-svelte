@@ -1,19 +1,16 @@
-const bombPct = 0.20
+const bombPct = 0.10
 
-export function drawGrid(grid) {
-  for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-    const row = [];
-    for (let colIndex = 0; colIndex < cols; colIndex++) {
-      row.push(`${rowIndex},${colIndex}`);
-    }
-    grid.push(row);
+
+export function updateBoard(grid,cell){
+  if(cell.flagged){
+    return grid
   }
-  return grid;
+  grid[cell.index].visited = true
+  return grid
 }
 
-function updateGrid(grid,cell){
 
-}
+
 
 
 export function createGrid(rows, cols) {
@@ -25,14 +22,17 @@ export function createGrid(rows, cols) {
   const grid = []
   let rowCount = 0
   let colCount = 0
+  let index = 0
   arr.forEach( a => {
     const cell = {
       row: rowCount,
       col: colCount,
       value:a,
       visited:false,
-      flagged:false
+      flagged:false,
+      index:index
     }
+    index+=1
     rowCount +=1
     if (rowCount == rows){
       rowCount =0
@@ -43,7 +43,6 @@ export function createGrid(rows, cols) {
   grid.forEach(cell =>{
     cell.value = findCellValue(grid,cell)
   })
-  console.log(grid)
   return grid;
 }
 
