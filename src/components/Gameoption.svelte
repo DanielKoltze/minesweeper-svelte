@@ -1,10 +1,11 @@
 <script>
-    export let MapSize
+    export let cols
+    export let rows
     export let onSelect
 </script>
   
   <main>
-    <p class="button" on:click={() => onSelect(MapSize)}>{MapSize}X{MapSize}</p>
+    <p class="button" on:click={() => onSelect(cols,rows)}>{cols}X{rows}</p>
   </main>
   
   <style>

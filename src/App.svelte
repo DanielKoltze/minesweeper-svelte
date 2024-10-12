@@ -2,12 +2,12 @@
     import Board from "./components/Board.svelte";
     import GameOptions from "./components/Gameoptions.svelte";
 	import { createGrid } from "./scripts/game.js";
-	let rows = 5
-	let cols = 5
+	let rows = 4
+	let cols = 4
 	let grid = []
-	function handleOnSelect(MapSize){
-		rows = MapSize
-		cols = MapSize
+	function handleOnSelect(_cols,_rows){
+		cols = _cols
+		rows = _rows
 	}
 
 	$: {
@@ -19,7 +19,7 @@
 	<h1 id="title">Minesweeper</h1>
 	<div class="container">
 		<GameOptions onSelect={handleOnSelect}/>
-		<Board grid={grid} rows={rows} cols={cols}/>		
+		<Board grid={grid} size={rows}/>		
 	</div>
 </main>
 

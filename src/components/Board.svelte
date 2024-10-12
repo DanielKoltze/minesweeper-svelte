@@ -1,31 +1,37 @@
 <script>
-    import Cell from './Cell.svelte';
-    import { createGrid } from '../scripts/game.js';
-    export let rows = 5;
-    export let cols = 5;
-    export let grid
-  </script>
+  import Cell from './Cell.svelte';
+  export let grid;
+  export let size; 
   
-  <main>
-    {#each grid as row}
-      <div class="row">
-        {#each row as cell}
-          <Cell value={cell} />
-        {/each}
-      </div>
+
+</script>
+
+<main>
+  <div class="grid" style="grid-template-columns: repeat({size}, 1fr);">
+    {#each grid as cell}
+      <Cell {cell}/>
     {/each}
-  </main>
-  
-  <style>
-    .row {
-      display: flex;
-    }
-  
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-  </style>
-  
+  </div>
+</main>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .cell {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+</style>
